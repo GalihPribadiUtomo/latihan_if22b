@@ -1,45 +1,77 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:myapp/app/controllers/auth_controller.dart';
 
 import '../controllers/signup_controller.dart';
 
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:4134727094.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2599168148.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2455483389.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:90139163.
 class SignupView extends GetView<SignupController> {
-  const SignupView({Key? key}) : super(key: key);
+  final cAuth = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign Up'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Email'),
+            SizedBox(
+              height: 80,
+            ),
+            Center(
+              child: Text(
+                "SIGNUP",
+                style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 105, 150, 34)),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Password'),
-                obscureText: true,
+            Center(
+              child: Text(
+                "SCREEN",
+                style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 105, 150, 34)),
               ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: controller.cEmail,
+              decoration: InputDecoration(
+                labelText: "Email",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: controller.cPass,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: "Password",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
             ),
             ElevatedButton(
-              
               onPressed: () {
-                // TODO: Implement sign up logic
+                cAuth.signup(controller.cEmail.text, controller.cPass.text);
               },
-              child: const Text('Sign Up'),
+              child: Text("Signup"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 105, 150, 34),
+                foregroundColor: Colors.white,
+              ),
             ),
           ],
         ),

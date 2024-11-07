@@ -98,5 +98,4 @@ class AuthController extends GetxController {
           title: "Terjadi kesalahan", middleText: "Email tidak valid");
     }
   }
-
 }
